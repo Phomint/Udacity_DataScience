@@ -14190,7 +14190,7 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Metrics</strong></p>
 <ul>
-<li>The best model on the test set for <code>samples_100</code>, <code>samples_10</code>, <code>samples_1</code> on accuracy and F-score and Decision tree was the best in training data.</li>
+<li>The AdaBoost classifier performs best on the test set for all subsets of data <code>samples_100</code>, <code>samples_10</code>, <code>samples_1</code> on accuracy and F-score and Decision tree was the best in training data but has overfitting and the performance was the worst in training data.</li>
 </ul>
 <p><strong>Prediction/Training time</strong></p>
 <ul>
@@ -14220,8 +14220,7 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>AdaBoost</strong></p>
-<p>I chose de AdaBoost that use boosting methods, AdaBoost first begins a decision tree and after expanding in many decision trees.
-The AdaBoost, first a single decision tree is grown and predictions are obtained for each point. We take note of all the points that are misclassified by the first decision tree and weight them more heavily as we grow the next decision tree, so the next decision tree will grow will try harder to classify these points correctly. We then obtain predictions by the second decision tree, reweight the misclassified points again, and continue to grow many decision trees in sequence, with each new decision trying to make up for the deficiencies of those previously grown in the sequence, finally could be combined all decision tree to vote and chose a class.</p>
+<p>I chose the AdaBoost that use boosting methods, the AdaBoost, first a single decision tree, the decision tree is analyses a data set in order to construct a set of rules, or questions, these rules can create a model that can classify complex situations, which is used to predict a class. So, predictions are obtained for each point. We take note of all the points that are misclassified by the first decision tree called (weak learner) that is the weight we calculate one which performs relatively poorly, them more heavily as we grow the next decision tree, so the next decision tree will grow will try harder to classify these points correctly. We then obtain predictions by the second decision tree, reweight the misclassified points again, and continue to grow many decision trees in sequence, with each new decision trying to make up for the deficiencies of those previously grown in the sequence, finally could be combined all decision tree to vote and chose a class.</p>
 
 </div>
 </div>
@@ -14386,6 +14385,7 @@ Final F-score on the testing data: 0.7401
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer</strong></p>
 <p>The accuracy and f-score increase, the accuracy of 0.8576 to 0.8652 and f-score of 0.7246 to 0.7401, GridSearch improve the outcomes a bit.</p>
+<p>However, between results from naive and results from the optimized model, is visible a big difference in the accuracy and f-score, are 0.2478 accuracy on naive against 0.8652 accuracy on the optimized model and 0.2917 f-score on naive against 0.7401 f-score on optimized.</p>
 
 </div>
 </div>
@@ -14455,7 +14455,7 @@ Final F-score on the testing data: 0.7401
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer</strong></p>
-<p>Looking plot above features most important are these following this rank: first <code>'capital-gain'</code>, second <code>'capital-loss'</code>, third <code>'age'</code>, fourth<code>'hours-per-week'</code>, fifth <code>education-num</code></p>
+<p>Looking plot above features most important are these following this rank: first <code>'capital-gain'</code>, second <code>'capital-loss'</code>, third <code>'age'</code>, fourth<code>'hours-per-week'</code>, fifth <code>education-num</code>, some make sense to me as hours of work, age and education, it is kind of intuitive but it is not an absolute truth, but it was expected that relationship, already for capital gain or loss has the strongest relationship but was not as expected, but maybe either because of the investments we have is strong relationship.</p>
 
 </div>
 </div>
@@ -14536,7 +14536,7 @@ Final F-score on the testing data: 0.7401
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer</strong></p>
-<p>Three of five features of question 6 are the same, <code>'age'</code>, <code>'hours-per-week'</code>, <code>'capital-gain'</code>, and confirm the last visualization, in this visualization appear another two features <code>'relationship-husband'</code> and <code>'marital-status_Married-civ-spouse'</code> using RandomForest, but here the most important feature is <code>'age'</code>.</p>
+<p>Three of five features of question 6 are the same, <code>'age'</code>, <code>'hours-per-week'</code>, <code>'capital-gain'</code>, and confirm the last visualization, in this visualization appear another two features <code>'relationship-husband'</code> and <code>'marital-status_Married-civ-spouse'</code> using RandomForest, but here the most important feature is <code>'age'</code>, the age is much more apparent, probably the proportion of adults with a more stable and high income, hours of work, my thinking of more hours of work plus income (not a rule). However, relationships with husband and marital status do not make as much sense, we should look deeper to understand.</p>
 
 </div>
 </div>
@@ -14648,13 +14648,34 @@ If training time and performace were a factor, is preferably use reduced data</p
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!!</span>jupyter nbconvert *.ipynb
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;[NbConvertApp] Converting notebook finding_donors.ipynb to html&#39;,
+ &#39;[NbConvertApp] Writing 509358 bytes to finding_donors.html&#39;]</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
